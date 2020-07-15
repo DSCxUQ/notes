@@ -8,4 +8,5 @@
 3. Intro to App Engine (Google Cloud)
 
 ## Contributors
-Hamish Bultitude - Google DSC Lead
+@m-ish Hamish Bultitude - Google DSC Lead
+@jslvn James Sullivan - Sanity Check & Editor
