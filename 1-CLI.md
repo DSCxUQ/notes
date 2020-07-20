@@ -43,9 +43,11 @@ We may want to create a new folder so we can better organise our files! This can
 
 What use is a folder if we cannot access it though? Enter the `cd <folder>` command, standing for *change directory*. Make sure to supply the full path of the directory that you want to access, or just the folder name if that folder is within the directory you are in! Confused? Have a play around with it :^)
 
+So we are able to enter folders, how do we back out of them? In every folder there are two 'special' folders - `.` representing the current folder (a concept we will review later) and `..` representing the parent directory. Therefore, if we wish to move to folder previous to the current, we can use `cd ..`.
+
 We may want to 'free' ourselves from our home directory and step to the root of the filesystem. This can be done with `cd /` to move to `/` folder, aka the root of the filesystem. 
 
-Whoops! We want to get back to the home directory! Just use `cd` to quickly move back to your home directory.
+Whoops! Lets say we got lost and want to get back to the home directory - Just use `cd` to quickly move back to your home directory.
 
 Before moving on, have a quick practice of moving around your filesystem. 
 
@@ -113,18 +115,108 @@ drwxr-xr-x   4 hamishbultitude  staff    128 15 Jul 19:29 images/
 Make sure to check `man` for further info on flags for your favourite commands!
 
 ## Files
-`cp` stands for copy, and believe it or not, allows you to copy files! Syntax is `cp <orig-file> <new-file>`.
+`cp` stands for *copy*, and believe it or not, allows you to copy files! Syntax is `cp <orig-file> <new-file>`.
 
--cp, mv, mv 2, rm
+`mv` stands for *move*, and has two functions, firstly moving a file from one place to another (think traditional cut and paste). Similar syntax to `cp`, with `mv <orig-location> <new-location>`. 
 
+As a result, we can also use `mv` to rename files in place.  
+
+`cat` stands for *concatenate*, and has some interesting functions. When supplying two files (`cat file1 file2`), `cat` will output both of the contents of these files sequentially! What people use `cat` for mostly is just checking the contents of a single file (`cat file1`) instead of opening the file in a text editor. 
+
+`less` is a similar command to `cat` which allows you to step through longer files in specified pages (height of the terminal window) with `space` for moving forward and `b` for moving backwards.
+
+Finally, `rm` stands for *remove*, and acts to delete specified files. Just supply the file names / directories of what you want to delete.
+Moreover, there are some important `rm` flags. Firstly, `-r` stands for *recursion*, and selects files in subdirectories for deletion. Secondly, `-f` stands for *force*, and works to remove files without asking for further confirmation from the user.
+
+Judging by the previous section, you can probably tell that `rm -rf` is a dangerous command. See `rm -rf /` for added nightmares (deletes the entire root directory!)
+
+## Text Matching & Wildcards
+After a while of using commands, it can get frustrating to constantly type out file names, especially if you want to apply a command en mass. In comes pattern matching!
+![](images/lecture1/pattern.png)
+
+For example,
+ 
+```sh
+$ ls *.jpg
+a.jpg
+
+$ ls ?.pdf
+d.pdf
+
+$ ls [ab]*
+a.jpg  b.gif
+
+$ ls *at*
+cat.png bat.png attic.jpg
+```
 ## The `alias` commmand 
+`alias` is a wonderful command that can help streamline your workflow. You may get sick of supplying the same command with the same flags over and over, and want your own shortform way of writing them out. Syntax is `alias <new-cmd>="<longcmd>"`. Here are some important ones that I personally use below...
 
-## Whats going on?
--top, htop, kill
+```
+# ls commands
+alias ll="ls -l"
+alias la="ls -al"
 
-## `sudo`
+# git commands (covered later in the lecture)
+alias gc="git commit"
+alias gco="git checkout"
+alias gp="git push"
+alias gb="git branch"
+
+# movement in the filesystem
+alias ..="cd .."
+
+```
+<<<<REQUEST FOR MORE>>>>
+
+If you ever get sick of an alias, you can use `unalias <alias-name>` to remove that alias'd command. 
 
 ## Vim vs Nano vs Emacs: The Eternal Battle
+So now, we know how to see files and create them, but what about editing them? We can use text editors for this! Here, you can pick your poison: I pose three options here, `vim`, `nano` and `emacs`. Each have their advantages and drawbacks, so try each one out to see what you enjoy! Personally I use `vim`, and use many of the extensions that MIT's [*missing semester*](https://www.youtube.com/watch?v=a6Q8Na575qc) lectures entail. Let's see a quick demo for creating a python script...
+
+Quick notes on vim commands / modes - I won't cover them in depth as this isn't a vim lecture, but be sure to check out MIT's lecture on it linked above if you want to know more!
+
+> Modes: Entering `vim` is normal mode, use `h j k l` or the arrow keys to move the cursor around. Press `i` to enter insert mode, where you can enter text! To leave insert mode, just hit `esc`.
+
+> Commands: `:w` to save, `:q` to quit, `:wq` to save and quit.
+
+Try writing the following in `vim dsc.py` and returning to the command line after saving.
+
+```python
+def hello():
+	print("Hello, DSC!")
+	
+	
+if __name__ == "__main__":
+	hello()
+```
+
+## Running programs
+Alright, now we have a file that can act as a program! How do we run this though?
+
+For python (an interpreted language (kinda)), we can just run the file by supplying files via the `python3 <file> <arguments>` command.
+
+For other languages (C, Java, etc), we have to compile the code into an executeable format. `gcc` is a compiler for the C programming language which, by default, produces an executable `a.out` file. To actually *RUN* the file, we call the file via `./a.out`, where `./` effectively means to execute `a.out` in the current folder. 
+
+To change the name of the executable, we an use `gcc <file> -o <output-name>`. 
+
+## Ending programs
+When writing programs, you may find that you eventually run into a situation where you just want to end the program right away. `ctrl + C` will send an `interrupt` signal to the program, and if otherwise not handled by your program (using signal handlers), will often just exit the program. 
+
+`ctrl + D` is a similar command, signifying `EOF - end of file` - that there is no more input for the program to read!
+
+If you let the program run its course (a la it hasn't become stuck in an infinite loop), the program will eventually return input to the command line. 
+
+## Whats going on?
+So far we have pretty good knowledge of commands exploring the filesystem - yet it can be super useful to see what is currently running on the machine. 
+
+`top` - 
+
+`htop` - 
+
+`kill` -  
+
+## `sudo`
 
 ## IO (> and >>) 
 
@@ -133,11 +225,6 @@ Make sure to check `man` for further info on flags for your favourite commands!
 ## Grep
 
 ## Connecting to other computers (SSH)
-
-## Running programs
-
-ctrl C - Terminate Signal
-ctrl D - EOF
 
 ## Version control (Git)
 
