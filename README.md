@@ -19,5 +19,3 @@ Click on the links below to access the relevant notes!
 @m-ish Hamish Bultitude - Google DSC Lead
 
 @jslvn James Sullivan - Sanity Check & Editor
-
-![](/images/DSCLockup.png =100x100)
