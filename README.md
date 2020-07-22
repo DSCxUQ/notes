@@ -3,6 +3,8 @@
 
 ## By Hamish Bultitude - UQ Google DSC Lead
 
+Explore the[repo](https://github.com/m-ish/UQxGoogleDSC/)!
+
 Feel free to reach out to me at `@ham` on uqcs slack or h.bultitude@uq.net.au!
 
 ## Lectures
@@ -18,4 +20,4 @@ Click on the links below to access the relevant notes!
 
 @jslvn James Sullivan - Sanity Check & Editor
 
-![](/images/DSCLockup.png)
+![](/images/DSCLockup.png =100x100)
