@@ -384,24 +384,60 @@ monster human bear
 horse samurai being
 ```
 
-## Connecting to other computers (SSH)
+## Connecting to other computers (`ssh`, `scp`)
 
-Alright! Now for a command I promise you will use often. `ssh`, or secure shell, is a method of remotely logging into computers. In this case, I want to be able to log into MOSS, UQ's student access comptuer,  so that 
+Alright! Now for a command I promise you will use often. `ssh`, or *secure shell*, is a method of remotely logging into computers. In this case, I want to be able to log into MOSS, UQ's student access comptuer, so that I can work on my C programming assignment! There are a few aspects to this command:
+
+`ssh user@address`
+
+or for moss... `ssh s1234567@moss.labs.eait.uq.edu.au`
+
+If the server then requires a password, you will be asked to type it! This can get very tiring over time however, so we use `ssh-keygen` for automatic logins! For the sake of time, I won't cover this topic, but I recommend following [TheGeekDiary's](https://www.thegeekdiary.com/using-the-ssh-keygen-command-in-linux/) tutorial on the topic.
+
+So, we've gone and created a file that we want to copy from the remote computer to our local machine. We can use `scp`, or *secure copy* to move files between the machines, with the format:
+
+***Copy the file "foobar.txt" from a remote host to the local host***
+
+```sh
+$ scp user@host:foobar.txt /path/to/directory
+```
+
+***Copy the file "foobar.txt" from the local host to a remote host***
+
+```sh
+$ scp foobar.txt user@host:/path/to/directory
+```
+
+That should be enough information to get you working on remote hosts efficiently! I also reccommend using `remote deploy` options on IDEs such as VSCODE or any JetBrains flavour to prevent repeatedly using `scp` to copy assignment files - I have seen many people lose precious work to this!
+
 ## Version control (Git)
 
-- commit
-- push
-- branch
-- checkout
-- git diff
-- vim diff
+Naturally, with programming comes the need to save work. Here we will briefly touch on how to keep track of work with `git`, a form of version control.
 
-## Installing More Programs
+### Beginning with `init`
 
-## Esoteric Additions
+To start recording work for a certain directory, we run `git init`.
 
--fish
+### Branching!
+
+Before moving further, we must address the concept of branches. Firstly, there is `master`, where the best and most functional code that you are working on should reside. Next, you should create your own branches representing a feature to be working on with the command `git branch <branch name>`, and switch to working on that branch with `git checkout <branch name>`.
+
+### Staging files
+
+Once we have created / edited some files within this folder, first we must `git add <files>` to be staged for recording, where `git add .` adds the entire directory. 
+
+### Commiting files
+
+Now, we can *commit*, where we take a snapshot of the code at the current point in time. This can be run with `git commit` which will open a text editor for you to add a meaningful message about the contents of the changes to your code. To circumvent the use of a text editor, we can use `git commit -m "commit msg"` where you can quickly add in quotation marks the message.
+
+### Pushing files
+
+Finally, we have the option of storing our code in an online repository. This is where solutions like GitHub come into play. We can make a repo online through GitHub, and add this to our local `git` instance with `git remote add origin <GitHub Link>`. Finally, we can move our code to this online repo with `git push -u origin <branch name>`, and afterwards just using `git push`.
+
+## Altnernatives to Bash
+
+As a small addition, it would be remiss to not mention alternatives to bash. Whilst bash is an incredible system, other services such as `zsh` and `fish` can extend the function of your shell and allow for great levels of customisation, which, let's face it, is a large facet of a programmer's personality. Do some further investigations into which shells may fit you best!
 
 ## Final thoughts
 
-Thanks for listening through this lecture! Whilst using the CLI may be frightening, just
+Thanks for listening through this lecture! Whilst using the CLI may be frightening, just remember the widespread applications and efficient workflows that the CLI can give you! Hope you found this lecture helpful, and please reach out to me if you have any questions at all!
