@@ -1,4 +1,4 @@
-![](./DSCLogo.png)
+![](/images/DSCLogo.png)
 # Notes for DSC x UQ Events
 
 ## By Hamish Bultitude - UQ Google DSC Lead
@@ -18,4 +18,4 @@ Click on the links below to access the relevant notes!
 
 @jslvn James Sullivan - Sanity Check & Editor
 
-![](./DSCLockup.png)
+![](/images/DSCLockup.png)
