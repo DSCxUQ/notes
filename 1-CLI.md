@@ -1,7 +1,9 @@
-![](./DSCLogo.png)
+![DSCLogo](./DSCLogo.png)
+
 # 1:CLI - [YouTube Link](-)
 
-### Questions?
+## Questions?
+
 Hit me up at @ham on UQ's slack, https://slack.uqcs.org/
 OR at h.bultitude@uq.net.au
 
@@ -9,18 +11,20 @@ OR at h.bultitude@uq.net.au
 
 Hello and welcome to the first lecture of UQ's partnership with Google - the  Developer Student Club initiative. My name is Hamish Bultitude, and today we will be going through the UNIX command line together. This lecture is intended for students that are in first and second year before taking CSSE2310, yet can act as a refresher if you are looking for it!
 
-Note that this is indeed for the UNIX commandline (or CLI for short) - whilst there is *some* crossover with [windows systems](check), applicability of this lecture includes Linux, macOS and Windows Subsystem for Linux (WSL). Check online for info on how to install WSL if you are on windows, or you can login to UQs student computer - *MOSS* via SSH. 
+Note that this is indeed for the UNIX commandline (or CLI for short) - whilst there is *some* crossover with [windows systems](check), applicability of this lecture includes Linux, macOS and Windows Subsystem for Linux (WSL). Check online for info on how to install WSL if you are on windows, or you can login to UQs student computer - *MOSS* via SSH.
 
 Lets begin!
 
 ## General Terminal
+
 Firstly, it is important to address why CLI is important. Previous to using the command line, you are probably used to running code from an IDE by the press of a button, or by moving around the filesystem by clicking through finder or windows explorer. Yet, by using the command line, it becomes easier to get tasks done faster & with greater clarity.
 
-<Terminal History>
+/Terminal History/
 
-<Bash>
+/Bash/
 
 ## Opening the terminal
+
 The terminal should be pretty easy to find on all operating systems. 
 
 `Terminal` - macOS & many Linux distros
@@ -30,29 +34,82 @@ The terminal should be pretty easy to find on all operating systems.
 Again, this is for UNIX systems, so the use of the command line program on windows will not be supported here. If you have installed WSL on windows, it should be fairly easily to open a new CLI. Check online for more information.
 
 Either way, you should be dumped to a screen that looks similar to this...
-<img src="./images/lecture1/bash.png" alt="drawing" width="500"/>
 
-Congrats! *The hardest step to learning something is actually beginning*. 
+![BashPreview](images/lecture1/bash.png)
+
+Congrats! *The hardest step to learning something is actually beginning*.
 
 ## Moving around the filesystem
+
 So without any prompts, what do we do now? Well, most likely (if you haven't fooled around with the CLI before) Bash has thrown you to your home directory. But what exactly is that? The home directory is 'your' space on the filesystem, for example, at UQ this is `/home/students/s1234567`, where you are free to edit files as you please. You can see whatever folder you are at currently using the `pwd` command - standing for *print working directory*.
 
-We can create files at this folder by using the `touch <filename>` command. This will create a file within our home directory, as that is the current folder that we are in! 
+We can create files at this folder by using the `touch <filename>` command. This will create a file within our home directory, as that is the current folder that we are in!
 
-We may want to create a new folder so we can better organise our files! This can be done with the `mkdir <name>` command. In case you were wondering, `mkdir` stands for *make directory*. 
+We may want to create a new folder so we can better organise our files! This can be done with the `mkdir <name>` command. In case you were wondering, `mkdir` stands for *make directory*.
 
 What use is a folder if we cannot access it though? Enter the `cd <folder>` command, standing for *change directory*. Make sure to supply the full path of the directory that you want to access, or just the folder name if that folder is within the directory you are in! Confused? Have a play around with it :^)
 
 So we are able to enter folders, how do we back out of them? In every folder there are two 'special' folders - `.` representing the current folder (a concept we will review later) and `..` representing the parent directory. Therefore, if we wish to move to folder previous to the current, we can use `cd ..`.
 
-We may want to 'free' ourselves from our home directory and step to the root of the filesystem. This can be done with `cd /` to move to `/` folder, aka the root of the filesystem. 
+We may want to 'free' ourselves from our home directory and step to the root of the filesystem. This can be done with `cd /` to move to `/` folder, aka the root of the filesystem.
 
 Whoops! Lets say we got lost and want to get back to the home directory - Just use `cd` to quickly move back to your home directory.
 
-Before moving on, have a quick practice of moving around your filesystem. 
+Before moving on, have a quick practice of moving around your filesystem.
+
+## What's in this folder: 1
+
+After creating files and folders for a while, it becomes hard to remember exactly what is in a folder! Use `ls` to return whatever is in your current folder, or `ls <folder>` to see what is in the supplied folder.
+
+## Flags: What's in this folder: 2
+
+Flags are an important part of UNIX commands. The use of flags allows for extended functionality of certain commands. Some examples are seen below:
+
+`ls -a`; lists ALL the files in the directory (including *hidden* files with the `.` extension (a la `.git/`). These files wouldn't be included with the normal `ls` command.
+
+```sh
+ ./              .DS_Store       1-CLI.md        3-AppEngine.md  README.md
+ ../             .git/           2-GO.md         DSCLogo.png     images/
+```
+
+---
+
+`ls -l`; lists regular files in a *detailed* view format.
+
+```sh
+total 120
+-rw-r--r--@ 1 hamishbultitude  staff   5549 18 Jul 20:07 1-CLI.md
+-rw-r--r--@ 1 hamishbultitude  staff     24 15 Jul 17:59 2-GO.md
+-rw-r--r--@ 1 hamishbultitude  staff     24 15 Jul 17:59 3-AppEngine.md
+-rw-r--r--@ 1 hamishbultitude  staff  37470 15 Jul 18:04 DSCLogo.png
+-rw-r--r--@ 1 hamishbultitude  staff    229 15 Jul 19:14 README.md
+drwxr-xr-x  4 hamishbultitude  staff    128 15 Jul 19:29 images/
+```
+---
+
+We can of course combine flags to specify further functions. See below:
+
+`ls -a -l` or just simply `ls -al`
+
+```sh
+total 136
+drwxr-xr-x  10 hamishbultitude  staff    320 18 Jul 20:14 ./
+drwxr-xr-x@ 46 hamishbultitude  staff   1472 17 Jul 22:22 ../
+-rw-r--r--@  1 hamishbultitude  staff   6148 15 Jul 19:29 .DS_Store
+drwxr-xr-x  12 hamishbultitude  staff    384 18 Jul 20:08 .git/
+-rw-r--r--@  1 hamishbultitude  staff   6685 18 Jul 20:14 1-CLI.md
+-rw-r--r--@  1 hamishbultitude  staff     24 15 Jul 17:59 2-GO.md
+-rw-r--r--@  1 hamishbultitude  staff     24 15 Jul 17:59 3-AppEngine.md
+-rw-r--r--@  1 hamishbultitude  staff  37470 15 Jul 18:04 DSCLogo.png
+-rw-r--r--@  1 hamishbultitude  staff    229 15 Jul 19:14 README.md
+drwxr-xr-x   4 hamishbultitude  staff    128 15 Jul 19:29 images/
+```
+
+---
 
 ## Manual
-If you ever get confused on how a command works, `man <command>` is your friend! For example, say we forget what the function of `ls` was? We could find out quickly with `man ls`. Most UNIX commands have an associated manual entry, yet let it be noted that some may not. At that point, dare I say, Google is your friend. 
+
+If you ever get confused on how a command works, `man <command>` is your friend! For example, say we forget what the function of `ls` was? We could find out quickly with `man ls`. Most UNIX commands have an associated manual entry, yet let it be noted that some may not. At that point, dare I say, Google is your friend.
 
 There are a variety of numbers associated with `man`. These come into play when there are multple version of the same command - say `printf` is both a User Command and a C function.
 
@@ -67,61 +124,19 @@ There are a variety of numbers associated with `man`. These come into play when 
 
 To separate out these, use `man <num> command` to be specific on the category of the command.
 
-Whilst Google is pretty awesome, make sure you can understand the layouts and workings of the `man` command, probability says you are going to need it at least some point down the line.  
+`man` also contains info on flags for commands to extend it's functionality!
 
-## What's in this folder: 1
-After creating files and folders for a while, it becomes hard to remember exactly what is in a folder! Use `ls` to return whatever is in your current folder, or `ls <folder>` to see what is in the supplied folder.
-
-## Flags: What's in this folder: 2
-Flags are an important part of UNIX commands. The use of flags allows for extended functionality of certain commands. Some examples are seen below:
-
-`ls -a`; lists ALL the files in the directory (including *hidden* files with the `.` extension (a la `.git/`). These files wouldn't be included with the normal `ls` command.
-> ```
-./              .DS_Store       1-CLI.md        3-AppEngine.md  README.md
-../             .git/           2-GO.md         DSCLogo.png     images/
-``` 
----
-
-`ls -l`; lists regular files in a *detailed* view format. 
-> ```
-total 120
--rw-r--r--@ 1 hamishbultitude  staff   5549 18 Jul 20:07 1-CLI.md
--rw-r--r--@ 1 hamishbultitude  staff     24 15 Jul 17:59 2-GO.md
--rw-r--r--@ 1 hamishbultitude  staff     24 15 Jul 17:59 3-AppEngine.md
--rw-r--r--@ 1 hamishbultitude  staff  37470 15 Jul 18:04 DSCLogo.png
--rw-r--r--@ 1 hamishbultitude  staff    229 15 Jul 19:14 README.md
-drwxr-xr-x  4 hamishbultitude  staff    128 15 Jul 19:29 images/
-```
----
-
-We can of course combine flags to specify further functions. See below:
-
-`ls -a -l` or just simply `ls -al`
-> ```
-total 136
-drwxr-xr-x  10 hamishbultitude  staff    320 18 Jul 20:14 ./
-drwxr-xr-x@ 46 hamishbultitude  staff   1472 17 Jul 22:22 ../
--rw-r--r--@  1 hamishbultitude  staff   6148 15 Jul 19:29 .DS_Store
-drwxr-xr-x  12 hamishbultitude  staff    384 18 Jul 20:08 .git/
--rw-r--r--@  1 hamishbultitude  staff   6685 18 Jul 20:14 1-CLI.md
--rw-r--r--@  1 hamishbultitude  staff     24 15 Jul 17:59 2-GO.md
--rw-r--r--@  1 hamishbultitude  staff     24 15 Jul 17:59 3-AppEngine.md
--rw-r--r--@  1 hamishbultitude  staff  37470 15 Jul 18:04 DSCLogo.png
--rw-r--r--@  1 hamishbultitude  staff    229 15 Jul 19:14 README.md
-drwxr-xr-x   4 hamishbultitude  staff    128 15 Jul 19:29 images/
-```
----
-
-Make sure to check `man` for further info on flags for your favourite commands!
+Whilst Google is pretty awesome, make sure you can understand the layouts and workings of the `man` command, probability says you are going to need it at least some point down the line.
 
 ## Files
+
 `cp` stands for *copy*, and believe it or not, allows you to copy files! Syntax is `cp <orig-file> <new-file>`.
 
-`mv` stands for *move*, and has two functions, firstly moving a file from one place to another (think traditional cut and paste). Similar syntax to `cp`, with `mv <orig-location> <new-location>`. 
+`mv` stands for *move*, and has two functions, firstly moving a file from one place to another (think traditional cut and paste). Similar syntax to `cp`, with `mv <orig-location> <new-location>`.
 
 As a result, we can also use `mv` to rename files in place.  
 
-`cat` stands for *concatenate*, and has some interesting functions. When supplying two files (`cat file1 file2`), `cat` will output both of the contents of these files sequentially! What people use `cat` for mostly is just checking the contents of a single file (`cat file1`) instead of opening the file in a text editor. 
+`cat` stands for *concatenate*, and has some interesting functions. When supplying two files (`cat file1 file2`), `cat` will output both of the contents of these files sequentially! What people use `cat` for mostly is just checking the contents of a single file (`cat file1`) instead of opening the file in a text editor.
 
 `less` is a similar command to `cat` which allows you to step through longer files in specified pages (height of the terminal window) with `space` for moving forward and `b` for moving backwards.
 
@@ -131,12 +146,14 @@ Moreover, there are some important `rm` flags. Firstly, `-r` stands for *recursi
 Judging by the previous section, you can probably tell that `rm -rf` is a dangerous command. See `rm -rf /` for added nightmares (deletes the entire root directory!)
 
 ## Text Matching & Wildcards
+
 After a while of using commands, it can get frustrating to constantly type out file names, especially if you want to apply a command en mass. In comes pattern matching!
-![](images/lecture1/pattern.png)
+
+![patternMatching](images/lecture1/pattern.png)
 
 For example,
- 
-```sh
+
+​```
 $ ls *.jpg
 a.jpg
 
@@ -149,10 +166,12 @@ a.jpg  b.gif
 $ ls *at*
 cat.png bat.png attic.jpg
 ```
-## The `alias` commmand 
+
+## The `alias` commmand
+
 `alias` is a wonderful command that can help streamline your workflow. You may get sick of supplying the same command with the same flags over and over, and want your own shortform way of writing them out. Syntax is `alias <new-cmd>="<longcmd>"`. Here are some important ones that I personally use below...
 
-```
+```bash
 # ls commands
 alias ll="ls -l"
 alias la="ls -al"
@@ -163,15 +182,18 @@ alias gco="git checkout"
 alias gp="git push"
 alias gb="git branch"
 
-# movement in the filesystem
+# general
 alias ..="cd .."
-
+alias py3="python3"
+alias grep='grep --colour=auto
 ```
-<<<<REQUEST FOR MORE>>>>
 
-If you ever get sick of an alias, you can use `unalias <alias-name>` to remove that alias'd command. 
+/Request for more/
+
+If you ever get sick of an alias, you can use `unalias <alias-name>` to remove that alias'd command.
 
 ## Vim vs Nano vs Emacs: The Eternal Battle
+
 So now, we know how to see files and create them, but what about editing them? We can use text editors for this! Here, you can pick your poison: I pose three options here, `vim`, `nano` and `emacs`. Each have their advantages and drawbacks, so try each one out to see what you enjoy! Personally I use `vim`, and use many of the extensions that MIT's [*missing semester*](https://www.youtube.com/watch?v=a6Q8Na575qc) lectures entail. Let's see a quick demo for creating a python script...
 
 Quick notes on vim commands / modes - I won't cover them in depth as this isn't a vim lecture, but be sure to check out MIT's lecture on it linked above if you want to know more!
@@ -192,46 +214,194 @@ if __name__ == "__main__":
 ```
 
 ## Running programs
+
 Alright, now we have a file that can act as a program! How do we run this though?
 
 For python (an interpreted language (kinda)), we can just run the file by supplying files via the `python3 <file> <arguments>` command.
 
-For other languages (C, Java, etc), we have to compile the code into an executeable format. `gcc` is a compiler for the C programming language which, by default, produces an executable `a.out` file. To actually *RUN* the file, we call the file via `./a.out`, where `./` effectively means to execute `a.out` in the current folder. 
+For other languages (C, Java, etc), we have to compile the code into an executeable format. `gcc` is a compiler for the C programming language which, by default, produces an executable `a.out` file. To actually *RUN* the file, we call the file via `./a.out`, where `./` effectively means to execute `a.out` in the current folder.
 
-To change the name of the executable, we an use `gcc <file> -o <output-name>`. 
+To change the name of the executable, we an use `gcc <file> -o <output-name>`.
 
 ## Ending programs
-When writing programs, you may find that you eventually run into a situation where you just want to end the program right away. `ctrl + C` will send an `interrupt` signal to the program, and if otherwise not handled by your program (using signal handlers), will often just exit the program. 
+
+When writing programs, you may find that you eventually run into a situation where you just want to end the program right away. `ctrl + C` will send an `interrupt` signal to the program, and if otherwise not handled by your program (using signal handlers), will often just exit the program.
 
 `ctrl + D` is a similar command, signifying `EOF - end of file` - that there is no more input for the program to read!
 
-If you let the program run its course (a la it hasn't become stuck in an infinite loop), the program will eventually return input to the command line. 
+If you let the program run its course (a la it hasn't become stuck in an infinite loop), the program will eventually return input to the command line.
 
 ## Whats going on?
-So far we have pretty good knowledge of commands exploring the filesystem - yet it can be super useful to see what is currently running on the machine. 
 
-`top` - 
+So far we have pretty good knowledge of commands exploring the filesystem - yet it can be super useful to see what is currently running on the machine.
 
-`htop` - 
+There are two common commands that allow you to see what is occurring on the machine at any given time. Take note of the columns `pid, command, %CPU`.
+`top` - A simple view
 
-`kill` -  
+![top](./images/lecture1/top.png)
+
+`htop` - A 'higher quality' top, with supported actions on each process, and nice graphs for CPU usage.
+
+![htop](./images/lecture1/htop.png)
+
+Oh noes! discord is taking up 35.9% of my CPU which personally, I'm not comfortable with! Time to `kill` it, literally.
+`kill` - From `man`: The kill utility sends a signal to the processes specified by the pid operands. Lucky we noted the `pid` of the process from `htop` or `top`! `kill` is used for sending signals to processes - so let's see exactly what signals we can send with `kill -l`
+
+```sh
+ 1) SIGHUP	 2) SIGINT	 3) SIGQUIT	 4) SIGILL	 5) SIGTRAP
+ 6) SIGABRT	 7) SIGEMT	 8) SIGFPE	 9) SIGKILL	10) SIGBUS
+11) SIGSEGV	12) SIGSYS	13) SIGPIPE	14) SIGALRM	15) SIGTERM
+16) SIGURG	17) SIGSTOP	18) SIGTSTP	19) SIGCONT	20) SIGCHLD
+21) SIGTTIN	22) SIGTTOU	23) SIGIO	24) SIGXCPU	25) SIGXFSZ
+26) SIGVTALRM	27) SIGPROF	28) SIGWINCH	29) SIGINFO	30) SIGUSR1
+31) SIGUSR2
+```
+
+There are a few that are important for ending processes here - `SIGINT` (which is what ctrl + C sends!), and `SIGQUIT`.
+> You can look at SIGINT as "user-initiated happy termination" and SIGQUIT as "user-initiated unhappy termination."
+
+There are some more 'quitting' signals, notably `SIGKILL` which kills the process *immediately*, without allowing the program any chance to cleanup - **only use this as a last result!**
 
 ## `sudo`
 
-## IO (> and >>) 
+`sudo` is an interesting command - it allows for users to execute commands with higher level permissions - named *superuser*. You'll find sometimes when executing commands that they will fail... sometimes these commands will succeed when supplying `sudo` before the command originally attempted to run.
 
-## Pipes ( | ) 
+## IO (>)
 
-## Grep
+Have you ever to save the output of certain commands to disk so that we can inspect them later! Or, have you ever wanted to automate the input to a program? Here we can use IO (input/output) redirection to achieve this!
+
+### Saving output to a file
+Here is a brief example using python...
+
+`script.py`:
+
+```python
+for i in range(0, 5)
+    print(i)
+```
+
+Now, on bash...
+
+```sh
+$ python3 script.py > save.log
+$
+```
+
+... you can see there is no output! This is because its being redirected to the file `save.log`. Now, if we were to `cat save.log`...
+
+```sh
+$ cat save.log
+0
+1
+2
+3
+4
+```
+
+### Sending input to a process
+
+We can perform the same function, but in reverse! See the following python script `input.py` that is repeatedly reading input from the user...
+
+```python
+recv = input()
+print(recv)
+```
+
+... and now for the actual input file, `in.txt` ...
+
+```txt
+Hello, stdin!
+```
+
+... and now to send it to the python script!
+
+```sh
+$ in.txt > python3 input.py
+  Hello, stdin!
+```
+
+If you are interested on this topic, have a further look at `>>` redirection, allowing for errors in the program `stderr` to be sent to a file.
+
+## Pipes ( | )
+
+Pipes are similar to IO redirection, except instead of redirecting IO of process into files, we can redirect IO between processes to combine functions together! This allows for complex behaviour from 'simple' commands joined together! Remember, *this is the underlying principle of UNIX*. Here, we will use three commands that do not come installed by default, but make for some fun examples :)
+
+`man fortune` - print a random, hopefully interesting, fortune!
+
+`man cowsay` - configurable speaking cow (just try it and you'll see!)
+
+`man lolcat` - rainbow coloring effect for text console display
+
+Let's build up some functionality... `fortune` by itself produces...
+
+![defaultFortune](./images/lecture1/fortune.png)
+
+Now, when we call `fortune | cowsay` we are inputting the fortunes output into the cowsay command by using the `|` symbol, representing a pipe between both commands.
+
+![cowsayFortune](./images/lecture1/fortuneCowsay.png)
+
+... and we get some interesting output! Finally, let's get all three commands together now ...
+
+![allTogether!](./images/lecture1/fortuneCowsayLolcat.png)
+
+... thats it! We have a colourful talking cow! So, to reiterate, we have taken the output from `fortune`, sent it through `cowsay` and colourised the text with `lolcat`. This is only a fun example of what pipes can do, yet there are more useful examples in the following example! `grep`!
+
+## `grep`
+
+`grep` is a pattern matching command, used to search text supplied to it either through pipes or as a command line argument. When finding a match, grep returns the entire line. Before explaining how the command works, its important to describe an `alias` that we have established before. By using `alias grep='grep --colour=auto`, we get colourised output, making it easier to see exactly what `grep` matched with! See 'def' is marked in red in the second example below...
+
+![colourGrep](images/lecture1/grep1color.png)
+
+We want to search for certain words from the file `text` below...
+
+```txt
+cat dog bird pig
+monster human bear
+horse samurai being
+```
+
+Let's see two examples of its usage...
+
+The file `text` as a command line argument...
+
+```bash
+$ grep text dog
+cat dog bird big
+```
+
+... and now piping the input of `cat text` to grep
+
+```bash
+$ cat text | grep dog
+cat dog bird pig
+```
+
+Of course, we can use UNIX pattern matching here. Lets see an example where we only want to find lines with words starting with 'be'...
+
+```bash
+$ cat text | grep be*
+monster human bear
+horse samurai being
+```
 
 ## Connecting to other computers (SSH)
 
+Alright! Now for a command I promise you will use often. `ssh`, or secure shell, is a method of remotely logging into computers. In this case, I want to be able to log into MOSS, UQ's student access comptuer,  so that 
 ## Version control (Git)
+
+- commit
+- push
+- branch
+- checkout
+- git diff
+- vim diff
 
 ## Installing More Programs
 
 ## Esoteric Additions
--fish 
+
+-fish
 
 ## Final thoughts
-Thanks for listening through this lecture! Whilst using the CLI may be frightening, just 
+
+Thanks for listening through this lecture! Whilst using the CLI may be frightening, just
