@@ -4,20 +4,20 @@
 
 ## Questions?
 
-Hit me up at @ham on UQ's slack, https://slack.uqcs.org/
+Hit me up at @ham on UQCS's slack, https://slack.uqcs.org/
 OR at h.bultitude@uq.net.au
 
 ## Introduction
 
-Hello and welcome to the first lecture of UQ's partnership with Google - the  Developer Student Club initiative. My name is Hamish Bultitude, and today we will be going through the UNIX command line together. This lecture is intended for students that are in first and second year before taking CSSE2310, yet can act as a refresher if you are looking for it!
+Hello and welcome to the first lecture of the Google Developer Student Club initiative at UQ. My name is Hamish Bultitude and today we'll be walking through an introduction to the UNIX command line together. This talk is intended for students that are in first and second year (before taking CSSE2310), but it can also act as refresher if you happen to be looking for one!
 
-Note that this is indeed for the UNIX commandline (or CLI for short) - whilst there is *some* crossover with [windows systems](check), applicability of this lecture includes Linux, macOS and Windows Subsystem for Linux (WSL). Check online for info on how to install WSL if you are on windows, or you can login to UQs student computer - *MOSS* via SSH.
+Note that this walkthrough is strictly for the UNIX command line interface (or CLI for short) and whilst there is *some* shared functionality with [Windows systems](check), this lecture is primarily applicable to Linux, macOS, and Windows Subsystem for Linux (WSL) systems. Check online for info on how to install WSL if you are on Windows, or you may be able log in to UQ's student server - *MOSS* via SSH (moss.labs.eait.uq.edu.au).
 
 Lets begin!
 
 ## General Terminal
 
-Firstly, it is important to address why CLI is important. Previous to using the command line, you are probably used to running code from an IDE by the press of a button, or by moving around the filesystem by clicking through finder or windows explorer. Yet, by using the command line, it becomes easier to get tasks done faster & with greater clarity.
+In order to understand why the command line is so valuable you have to understand the importance of feedback loops to the workflow of the average developer. Prior to using the command line, you've probably become used to running code from an IDE by the press of a button, or by moving around the filesystem by clicking through finder or Windows explorer. But by using the command line, it becomes easier to get tasks done faster & with greater clarity. With a command line interface the time taken to run code and modify the filesystem can be drastically reduced and certain tasks you might have had to do by hand can be partially or fully automated using combinations of useful tools.
 
 /Terminal History/
 
@@ -27,13 +27,13 @@ Firstly, it is important to address why CLI is important. Previous to using the 
 
 The terminal should be pretty easy to find on all operating systems. 
 
-`Terminal` - macOS & many Linux distros
+`Terminal` <!-- macOS & many Linux distros
 
 `Command Line` or `cmd.exe` - Windows
 
-Again, this is for UNIX systems, so the use of the command line program on windows will not be supported here. If you have installed WSL on windows, it should be fairly easily to open a new CLI. Check online for more information.
+-->Again, this is for UNIX systems, so the use of the command line program on Windows will not be supported here. If you have installed WSL on windows, it should be fairly easily to open a new CLI. Check online for more information.
 
-Either way, you should be dumped to a screen that looks similar to this...
+Upon running the Terminal program, you should be see a window similar to this (don't worry if it's a different colour on macOS):
 
 ![BashPreview](images/lecture1/bash.png)
 
@@ -41,19 +41,25 @@ Congrats! *The hardest step to learning something is actually beginning*.
 
 ## Moving around the filesystem
 
-So without any prompts, what do we do now? Well, most likely (if you haven't fooled around with the CLI before) Bash has thrown you to your home directory. But what exactly is that? The home directory is 'your' space on the filesystem, for example, at UQ this is `/home/students/s1234567`, where you are free to edit files as you please. You can see whatever folder you are at currently using the `pwd` command - standing for *print working directory*.
+So what now? Well, most likely (if you haven't fooled around with the CLI before) bash has started you off in your home directory. But what exactly is that? The home directory is 'your' space on the filesystem, for example, at UQ this is `/home/students/s1234567`, where you are free to edit files as you please. You can see whatever folder you are at currently using the `pwd` command - standing for *print working directory*.
 
-We can create files at this folder by using the `touch <filename>` command. This will create a file within our home directory, as that is the current folder that we are in!
+#### Creating Files
+
+We can create files at this folder by using the `touch <filename>` command. This will create an empty file within our home directory, as that is the current folder that we are in!
+
+#### Creating Directories (Folders)
 
 We may want to create a new folder so we can better organise our files! This can be done with the `mkdir <name>` command. In case you were wondering, `mkdir` stands for *make directory*.
+
+#### Changing Directories 
 
 What use is a folder if we cannot access it though? Enter the `cd <folder>` command, standing for *change directory*. Make sure to supply the full path of the directory that you want to access, or just the folder name if that folder is within the directory you are in! Confused? Have a play around with it :^)
 
 So we are able to enter folders, how do we back out of them? In every folder there are two 'special' folders - `.` representing the current folder (a concept we will review later) and `..` representing the parent directory. Therefore, if we wish to move to folder previous to the current, we can use `cd ..`.
 
-We may want to 'free' ourselves from our home directory and step to the root of the filesystem. This can be done with `cd /` to move to `/` folder, aka the root of the filesystem.
+We may want to 'free' ourselves from our home directory and step to the root of the filesystem. This can be done with `cd /` to move to the `/` folder, aka the root of the filesystem.
 
-Whoops! Lets say we got lost and want to get back to the home directory - Just use `cd` to quickly move back to your home directory.
+Whoops! Lets say we got lost and want to get back to the home directory - Just use `cd` to quickly move back to your home directory. This is shorthand for `cd ~`, as `~` is a link to your home directory.
 
 Before moving on, have a quick practice of moving around your filesystem.
 
@@ -61,7 +67,7 @@ Before moving on, have a quick practice of moving around your filesystem.
 
 After creating files and folders for a while, it becomes hard to remember exactly what is in a folder! Use `ls` to return whatever is in your current folder, or `ls <folder>` to see what is in the supplied folder.
 
-## Flags: What's in this folder: 2
+#### Flags: All this power and more
 
 Flags are an important part of UNIX commands. The use of flags allows for extended functionality of certain commands. Some examples are seen below:
 
@@ -120,26 +126,27 @@ There are a variety of numbers associated with `man`. These come into play when 
 5. File Formats and Conventions
 6. Games et. Al.
 7. Miscellanea
-8. System Administration tools and Deamons
+8. System Administration tools and Daemons
 
 To separate out these, use `man <num> command` to be specific on the category of the command.
 
-`man` also contains info on flags for commands to extend it's functionality!
+`man` also contains information on the flags for each command that extend its functionality!
 
-Whilst Google is pretty awesome, make sure you can understand the layouts and workings of the `man` command, probability says you are going to need it at least some point down the line.
+Understanding `man` is an invaluable skill and `man thingyoucantmakework` should be your first stop before heading over to StackOverflow. 
 
-## Files
+## Manipulating Files
 
-`cp` stands for *copy*, and believe it or not, allows you to copy files! Syntax is `cp <orig-file> <new-file>`.
+#### Moving and Copying Files
+`cp` stands for *copy*, and believe it or not, allows you to copy files! Syntax is `cp <orig-file> <new-file>`. If you want to copy an entire directory, you'll have to make use of `cp`'s `-r` flag.
 
-`mv` stands for *move*, and has two functions, firstly moving a file from one place to another (think traditional cut and paste). Similar syntax to `cp`, with `mv <orig-location> <new-location>`.
+`mv` stands for *move*, and has two functions, firstly moving a file from one place to another (think traditional cut and paste). Similar syntax to `cp`, with `mv <orig-location> <new-location>`. Its other use allows us to rename files in place: `mv <oldname> <newname>`.  
 
-As a result, we can also use `mv` to rename files in place.  
-
+#### Reading Files
 `cat` stands for *concatenate*, and has some interesting functions. When supplying two files (`cat file1 file2`), `cat` will output both of the contents of these files sequentially! What people use `cat` for mostly is just checking the contents of a single file (`cat file1`) instead of opening the file in a text editor.
 
-`less` is a similar command to `cat` which allows you to step through longer files in specified pages (height of the terminal window) with `space` for moving forward and `b` for moving backwards.
+`less` is a similar command to `cat` which allows you to step through longer files in specified pages (height of the termi
 
+#### Deleting Files
 Finally, `rm` stands for *remove*, and acts to delete specified files. Just supply the file names / directories of what you want to delete.
 Moreover, there are some important `rm` flags. Firstly, `-r` stands for *recursion*, and selects files in subdirectories for deletion. Secondly, `-f` stands for *force*, and works to remove files without asking for further confirmation from the user.
 
@@ -147,7 +154,7 @@ Judging by the previous section, you can probably tell that `rm -rf` is a danger
 
 ## Text Matching & Wildcards
 
-After a while of using commands, it can get frustrating to constantly type out file names, especially if you want to apply a command en mass. In comes pattern matching!
+After a while of using commands, it can get frustrating to constantly type out file names, especially if you want to apply a command *en masse*. In comes pattern matching!
 
 ![patternMatching](images/lecture1/pattern.png)
 
@@ -165,7 +172,6 @@ a.jpg  b.gif
 
 $ ls *at*
 cat.png bat.png attic.jpg
-```
 
 ## The `alias` commmand
 
@@ -188,19 +194,21 @@ alias py3="python3"
 alias grep='grep --colour=auto
 ```
 
+\*Note that these aliases only live as long as your current terminal session. There are ways to make them persist, but we'll cover later.
+
 /Request for more/
 
 If you ever get sick of an alias, you can use `unalias <alias-name>` to remove that alias'd command.
 
 ## Vim vs Nano vs Emacs: The Eternal Battle
 
-So now, we know how to see files and create them, but what about editing them? We can use text editors for this! Here, you can pick your poison: I pose three options here, `vim`, `nano` and `emacs`. Each have their advantages and drawbacks, so try each one out to see what you enjoy! Personally I use `vim`, and use many of the extensions that MIT's [*missing semester*](https://www.youtube.com/watch?v=a6Q8Na575qc) lectures entail. Let's see a quick demo for creating a python script...
+So now we know how to see files and create them, but what about editing them? We can use text editors for this! You can pick your poison, but common options include `vim`, `nano` and `emacs`. Each have their advantages and drawbacks, so try each one out to see what you enjoy! Personally I use `vim`. If you'd like to see a walkthrough of vim's basic functionality have a look at MIT's [*missing semester*](https://www.youtube.com/watch?v=a6Q8Na575qc) lecture on vim. Let's see a quick demo for creating a Python script...
 
 Quick notes on vim commands / modes - I won't cover them in depth as this isn't a vim lecture, but be sure to check out MIT's lecture on it linked above if you want to know more!
 
 > Modes: Entering `vim` is normal mode, use `h j k l` or the arrow keys to move the cursor around. Press `i` to enter insert mode, where you can enter text! To leave insert mode, just hit `esc`.
 
-> Commands: `:w` to save, `:q` to quit, `:wq` to save and quit.
+> Commands can only be entered in normal mode. Particularly handy commands include: `:w` to save, `:q` to quit, `:wq` to save and quit.
 
 Try writing the following in `vim dsc.py` and returning to the command line after saving.
 
@@ -219,7 +227,7 @@ Alright, now we have a file that can act as a program! How do we run this though
 
 For python (an interpreted language (kinda)), we can just run the file by supplying files via the `python3 <file> <arguments>` command.
 
-For other languages (C, Java, etc), we have to compile the code into an executeable format. `gcc` is a compiler for the C programming language which, by default, produces an executable `a.out` file. To actually *RUN* the file, we call the file via `./a.out`, where `./` effectively means to execute `a.out` in the current folder.
+For other languages (C, Java, etc), we have to compile the code into an executable format. `gcc` is a compiler for the C programming language which, by default, produces an executable `a.out` file. To actually *run* the file, we call the file via `./a.out`, where `./` effectively means to execute `a.out` in the current folder.
 
 To change the name of the executable, we an use `gcc <file> -o <output-name>`.
 
@@ -244,7 +252,7 @@ There are two common commands that allow you to see what is occurring on the mac
 
 ![htop](./images/lecture1/htop.png)
 
-Oh noes! discord is taking up 35.9% of my CPU which personally, I'm not comfortable with! Time to `kill` it, literally.
+Oh no! Discord is taking up 35.9% of my CPU which personally, I'm not comfortable with! Time to `kill` it, literally.
 `kill` - From `man`: The kill utility sends a signal to the processes specified by the pid operands. Lucky we noted the `pid` of the process from `htop` or `top`! `kill` is used for sending signals to processes - so let's see exactly what signals we can send with `kill -l`
 
 ```sh
@@ -264,11 +272,11 @@ There are some more 'quitting' signals, notably `SIGKILL` which kills the proces
 
 ## `sudo`
 
-`sudo` is an interesting command - it allows for users to execute commands with higher level permissions - named *superuser*. You'll find sometimes when executing commands that they will fail... sometimes these commands will succeed when supplying `sudo` before the command originally attempted to run.
+`sudo` is an interesting command - it allows for users to execute commands with higher level permissions - named *superuser*. You'll find sometimes when executing commands that they will fail... sometimes these commands will require `sudo` permissions in order to run (e.g. installing packages with `apt` on Ubuntu).
 
 ## IO (>)
 
-Have you ever to save the output of certain commands to disk so that we can inspect them later! Or, have you ever wanted to automate the input to a program? Here we can use IO (input/output) redirection to achieve this!
+Have you ever to save the output of certain commands to a file so that we can inspect them later! Or have you ever wanted to automate the input to a program? Here we can use IO (input/output) redirection to achieve this!
 
 ### Saving output to a file
 Here is a brief example using python...
@@ -276,11 +284,11 @@ Here is a brief example using python...
 `script.py`:
 
 ```python
-for i in range(0, 5)
+for i in range(0, 5):
     print(i)
 ```
 
-Now, on bash...
+Now, using the terminal...
 
 ```sh
 $ python3 script.py > save.log
@@ -300,7 +308,7 @@ $ cat save.log
 
 ### Sending input to a process
 
-We can perform the same function, but in reverse! See the following python script `input.py` that is repeatedly reading input from the user...
+We can perform the same function, but in reverse! See the following python script `input.py` that is reads input from the user and prints it out...
 
 ```python
 recv = input()
@@ -313,18 +321,18 @@ print(recv)
 Hello, stdin!
 ```
 
-... and now to send it to the python script!
+... and now to send it to the python script! (we have to get the contents of the file with the `cat` command).
 
 ```sh
-$ in.txt > python3 input.py
+$ cat in.txt > python3 input.py
   Hello, stdin!
 ```
 
-If you are interested on this topic, have a further look at `>>` redirection, allowing for errors in the program `stderr` to be sent to a file.
+If you are interested on this topic, have a look at `>>` redirection which allows for appending new input to a file or `2>` redirection errors in the program `stderr` to be sent to a file.
 
 ## Pipes ( | )
 
-Pipes are similar to IO redirection, except instead of redirecting IO of process into files, we can redirect IO between processes to combine functions together! This allows for complex behaviour from 'simple' commands joined together! Remember, *this is the underlying principle of UNIX*. Here, we will use three commands that do not come installed by default, but make for some fun examples :)
+Pipes are similar to IO redirection, except instead of redirecting IO of process into files, we can redirect IO between processes to combine functions together! This allows for complex behaviour from 'simple' commands joined together! *This is an underlying principle of UNIX*: small tools, each designed to do one thing well, that can be combined to accomplish more complex tasks. Here, we will use three commands that do not come installed by default, but make for some fun examples :)
 
 `man fortune` - print a random, hopefully interesting, fortune!
 
@@ -344,7 +352,7 @@ Now, when we call `fortune | cowsay` we are inputting the fortunes output into t
 
 ![allTogether!](./images/lecture1/fortuneCowsayLolcat.png)
 
-... thats it! We have a colourful talking cow! So, to reiterate, we have taken the output from `fortune`, sent it through `cowsay` and colourised the text with `lolcat`. This is only a fun example of what pipes can do, yet there are more useful examples in the following example! `grep`!
+... that's it! We have a colourful talking cow! So, to reiterate, we have taken the output from `fortune`, sent it through `cowsay` and colourised the text with `lolcat`. This is only a fun example of what pipes can do, yet there are more useful examples in the following example! `grep`!
 
 ## `grep`
 
@@ -386,29 +394,29 @@ horse samurai being
 
 ## Connecting to other computers (`ssh`, `scp`)
 
-Alright! Now for a command I promise you will use often. `ssh`, or *secure shell*, is a method of remotely logging into computers. In this case, I want to be able to log into MOSS, UQ's student access comptuer, so that I can work on my C programming assignment! There are a few aspects to this command:
+Alright! Now for a command I promise you will use often. `ssh`, or *secure shell*, is a method of remotely logging into computers. In this case, I want to be able to log into `moss`, UQ's student access computer, so that I can work on my C programming assignment! There are a few aspects to this command:
 
 `ssh user@address`
 
 or for moss... `ssh s1234567@moss.labs.eait.uq.edu.au`
 
-If the server then requires a password, you will be asked to type it! This can get very tiring over time however, so we use `ssh-keygen` for automatic logins! For the sake of time, I won't cover this topic, but I recommend following [TheGeekDiary's](https://www.thegeekdiary.com/using-the-ssh-keygen-command-in-linux/) tutorial on the topic.
+If the server requires a password, you will be asked to type it. However, this can get very tiring over time. One alternative is to use SSH keys to log on (see `ssh-keygen` and [TheGeekDiary's](https://www.thegeekdiary.com/using-the-ssh-keygen-command-in-linux/) tutorial on the topic).
 
-So, we've gone and created a file that we want to copy from the remote computer to our local machine. We can use `scp`, or *secure copy* to move files between the machines, with the format:
+So, we've gone and created a file that we want to copy from the remote computer to our local machine. We can use `scp`, or *secure copy* to move files between the machines, using the following formats:
 
-***Copy the file "foobar.txt" from a remote host to the local host***
+***To copy the file "foobar.txt" from a remote host to the local host***
 
 ```sh
 $ scp user@host:foobar.txt /path/to/directory
 ```
 
-***Copy the file "foobar.txt" from the local host to a remote host***
+***To copy the file "foobar.txt" from the local host to a remote host***
 
 ```sh
 $ scp foobar.txt user@host:/path/to/directory
 ```
 
-That should be enough information to get you working on remote hosts efficiently! I also reccommend using `remote deploy` options on IDEs such as VSCODE or any JetBrains flavour to prevent repeatedly using `scp` to copy assignment files - I have seen many people lose precious work to this!
+That should be enough information to get you working on remote hosts efficiently! I also recommend using `remote deploy` options on IDEs such as VSCode or any JetBrains flavour to prevent repeatedly using `scp` to copy assignment files - I have seen many people lose precious work to this!
 
 ## Version control (Git)
 
@@ -434,9 +442,9 @@ Now, we can *commit*, where we take a snapshot of the code at the current point 
 
 Finally, we have the option of storing our code in an online repository. This is where solutions like GitHub come into play. We can make a repo online through GitHub, and add this to our local `git` instance with `git remote add origin <GitHub Link>`. Finally, we can move our code to this online repo with `git push -u origin <branch name>`, and afterwards just using `git push`.
 
-## Altnernatives to Bash
+## Alternatives to Bash
 
-As a small addition, it would be remiss to not mention alternatives to bash. Whilst bash is an incredible system, other services such as `zsh` and `fish` can extend the function of your shell and allow for great levels of customisation, which, let's face it, is a large facet of a programmer's personality. Do some further investigations into which shells may fit you best!
+There are also alternative shells available for Linux and macOS. While bash is an incredible system, other services such as `zsh` and `fish` can extend the function of your shell and allow for greater levels of customisation, which, let's face it, is a big draw for a lot of programmers. Do some further investigations into which shells may fit you best!
 
 ## Final thoughts
 
