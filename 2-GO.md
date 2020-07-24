@@ -1,2 +1,4 @@
-# Google DSCxUQ 1: CLI
+# Google DSCxUQ 2: Golang
+
+eta: soon...
 
