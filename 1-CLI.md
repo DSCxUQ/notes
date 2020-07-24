@@ -23,7 +23,7 @@ In order to understand why the command line is so valuable you have to understan
 
 /Bash/
 
-## Opening the terminal
+## Opening the Terminal
 
 The terminal should be pretty easy to find on all operating systems. 
 
@@ -51,7 +51,7 @@ We can create files at this folder by using the `touch <filename>` command. This
 
 We may want to create a new folder so we can better organise our files! This can be done with the `mkdir <name>` command. In case you were wondering, `mkdir` stands for *make directory*.
 
-#### Changing Directories 
+#### Changing Directories
 
 What use is a folder if we cannot access it though? Enter the `cd <folder>` command, standing for *change directory*. Make sure to supply the full path of the directory that you want to access, or just the folder name if that folder is within the directory you are in! Confused? Have a play around with it :^)
 
@@ -198,7 +198,7 @@ If you ever get sick of an alias, you can use `unalias <alias-name>` to remove t
 
 \*Note that these aliases only live as long as your current terminal session. There are ways to make them persist, so let's get it done!
 
-There is a file in your home (`~`) directory that contains a `.bash_profile` file. Any commands within this file will be run on loading of bash terminal sessions, thus put any aliases that you want to keep in here! Check any aliases that you have set in your current session (that you may not have saved!) just by simply running `alias` and copying these into `._bash_profile` using a text editor that we will go into details with in the next section...
+There is a file in your home (`~`) directory that contains a `.bash_profile` file. Any commands within this file will be run on loading of bash terminal sessions, thus put any aliases that you want to keep in here! Check any aliases that you have set in your current session (that you may not have saved!) just by simply running `alias` and copying these into `.bash_profile` using a text editor that we will go into details with in the next section...
 
 ## Vim vs Nano vs Emacs: The Eternal Battle
 
@@ -268,7 +268,7 @@ Oh no! Discord is taking up 35.9% of my CPU which personally, I'm not comfortabl
 There are a few that are important for ending processes here - `SIGINT` (which is what ctrl + C sends!), and `SIGQUIT`.
 > You can look at SIGINT as "user-initiated happy termination" and SIGQUIT as "user-initiated unhappy termination."
 
-There are some more 'quitting' signals, notably `SIGKILL` which kills the process *immediately*, without allowing the program any chance to cleanup - **only use this as a last result!**
+There are some more 'quitting' signals, notably `SIGKILL` which kills the process *immediately*, without allowing the program any chance to cleanup - **only use this as a last resort!**
 
 ## `sudo`
 
@@ -276,9 +276,10 @@ There are some more 'quitting' signals, notably `SIGKILL` which kills the proces
 
 ## IO (>)
 
-Have you ever to save the output of certain commands to a file so that we can inspect them later! Or have you ever wanted to automate the input to a program? Here we can use IO (input/output) redirection to achieve this!
+Have you ever had to save the output of certain commands to a file so that we can inspect them later! Or have you ever wanted to automate the input to a program? Here we can use IO (input/output) redirection to achieve this!
 
 ### Saving output to a file
+
 Here is a brief example using python...
 
 `script.py`:
