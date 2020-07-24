@@ -11,7 +11,7 @@ OR at h.bultitude@uq.net.au
 
 Hello and welcome to the first lecture of the Google Developer Student Club initiative at UQ. My name is Hamish Bultitude and today we'll be walking through an introduction to the UNIX command line together. This talk is intended for students that are in first and second year (before taking CSSE2310), but it can also act as refresher if you happen to be looking for one!
 
-Note that this walkthrough is strictly for the UNIX command line interface (or CLI for short) and whilst there is *some* shared functionality with [Windows systems](check), this lecture is primarily applicable to Linux, macOS, and Windows Subsystem for Linux (WSL) systems. Check online for info on how to install WSL if you are on Windows, or you may be able log in to UQ's student server - `moss` via SSH (moss.labs.eait.uq.edu.au).
+Note that this walkthrough is strictly for the UNIX command line interface (or CLI for short) and whilst there is *some* shared functionality with Windows systems, this lecture is primarily applicable to Linux, macOS, and Windows Subsystem for Linux (WSL) systems. Check online for info on how to install WSL if you are on Windows, or you may be able log in to UQ's student server - `moss` via SSH (moss.labs.eait.uq.edu.au).
 
 Lets begin!
 
@@ -27,11 +27,11 @@ In order to understand why the command line is so valuable you have to understan
 
 The terminal should be pretty easy to find on all operating systems. 
 
-`Terminal` <!-- macOS & many Linux distros
+`Terminal` macOS & many Linux distros
 
 `Command Line` or `cmd.exe` - Windows
 
--->Again, this is for UNIX systems, so the use of the command line program on Windows will not be supported here. If you have installed WSL on windows, it should be fairly easily to open a new CLI. Check online for more information.
+Again, this is for UNIX systems, so the use of the command line program on Windows will not be supported here. If you have installed WSL on windows, it should be fairly easily to open a new CLI. Check online for more information.
 
 Upon running the Terminal program, you should be see a window similar to this (don't worry if it's a different colour on macOS):
 
@@ -160,7 +160,7 @@ After a while of using commands, it can get frustrating to constantly type out f
 
 For example,
 
-​```bash
+```bash
 $ ls *.jpg
 a.jpg
 
