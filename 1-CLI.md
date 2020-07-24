@@ -1,4 +1,4 @@
-![DSCLogo](./DSCLogo.png)
+![DSCLogo](./images/DSCLogo.png)
 
 # 1:CLI - [YouTube Link](-)
 
@@ -160,7 +160,7 @@ After a while of using commands, it can get frustrating to constantly type out f
 
 For example,
 
-​```
+​```bash
 $ ls *.jpg
 a.jpg
 
@@ -172,6 +172,7 @@ a.jpg  b.gif
 
 $ ls *at*
 cat.png bat.png attic.jpg
+```
 
 ## The `alias` commmand
 
@@ -193,12 +194,11 @@ alias ..="cd .."
 alias py3="python3"
 alias grep='grep --colour=auto
 ```
-
-\*Note that these aliases only live as long as your current terminal session. There are ways to make them persist, but we'll cover later.
-
-/Request for more/
-
 If you ever get sick of an alias, you can use `unalias <alias-name>` to remove that alias'd command.
+
+\*Note that these aliases only live as long as your current terminal session. There are ways to make them persist, so let's get it done!
+
+There is a file in your home (`~`) directory that contains a `.bash_profile` file. Any commands within this file will be run on loading of bash terminal sessions, thus put any aliases that you want to keep in here! Check any aliases that you have set in your current session (that you may not have saved!) just by simply running `alias` and copying these into `._bash_profile` using a text editor that we will go into details with in the next section...
 
 ## Vim vs Nano vs Emacs: The Eternal Battle
 
