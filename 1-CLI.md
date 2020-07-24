@@ -11,7 +11,7 @@ OR at h.bultitude@uq.net.au
 
 Hello and welcome to the first lecture of the Google Developer Student Club initiative at UQ. My name is Hamish Bultitude and today we'll be walking through an introduction to the UNIX command line together. This talk is intended for students that are in first and second year (before taking CSSE2310), but it can also act as refresher if you happen to be looking for one!
 
-Note that this walkthrough is strictly for the UNIX command line interface (or CLI for short) and whilst there is *some* shared functionality with [Windows systems](check), this lecture is primarily applicable to Linux, macOS, and Windows Subsystem for Linux (WSL) systems. Check online for info on how to install WSL if you are on Windows, or you may be able log in to UQ's student server - *MOSS* via SSH (moss.labs.eait.uq.edu.au).
+Note that this walkthrough is strictly for the UNIX command line interface (or CLI for short) and whilst there is *some* shared functionality with [Windows systems](check), this lecture is primarily applicable to Linux, macOS, and Windows Subsystem for Linux (WSL) systems. Check online for info on how to install WSL if you are on Windows, or you may be able log in to UQ's student server - `moss` via SSH (moss.labs.eait.uq.edu.au).
 
 Lets begin!
 
@@ -416,7 +416,7 @@ $ scp user@host:foobar.txt /path/to/directory
 $ scp foobar.txt user@host:/path/to/directory
 ```
 
-That should be enough information to get you working on remote hosts efficiently! I also recommend using `remote deploy` options on IDEs such as VSCode or any JetBrains flavour to prevent repeatedly using `scp` to copy assignment files - I have seen many people lose precious work to this!
+That should be enough information to get you working on remote hosts efficiently! I also recommend using `remote deploy` options or plugins on IDEs like VSCode or JetBrains products to prevent repeatedly using `scp` to copy assignment files - I have seen many people lose precious work to this!
 
 ## Version control (Git)
 
@@ -444,7 +444,7 @@ Finally, we have the option of storing our code in an online repository. This is
 
 ## Alternatives to Bash
 
-There are also alternative shells available for Linux and macOS. While bash is an incredible system, other services such as `zsh` and `fish` can extend the function of your shell and allow for greater levels of customisation, which, let's face it, is a big draw for a lot of programmers. Do some further investigations into which shells may fit you best!
+There are also alternative shells available for Linux and macOS. While bash is an incredible system, other services such as `zsh` and `fish` can extend the function of your shell and allow for greater levels of customisation, which, let's face it, is a big draw for a lot of programmers. Do some more research into which shell might fit you best!
 
 ## Final thoughts
 
