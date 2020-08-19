@@ -443,6 +443,44 @@ Now, we can *commit*, where we take a snapshot of the code at the current point 
 
 Finally, we have the option of storing our code in an online repository. This is where solutions like GitHub come into play. We can make a repo online through GitHub, and add this to our local `git` instance with `git remote add origin <GitHub Link>`. Finally, we can move our code to this online repo with `git push -u origin <branch name>`, and afterwards just using `git push`.
 
+
+## Other Command Line Tools
+
+The command line is a fantastic tool to be able to quickly do tasks on a computer, particularly tasks that speed up your developement worklow. Its other benefit is that its computational overhead is lower than if you were doing it via a program; for example, with ssh you can access another computer's files and programs easily, and in a (relatively) fast manner. If you were to do the same thing but via remote desktop'ing or TeamViewer-ing into someone else's computer, you would have that extra process and GUI running on your computer. The same goes for vim, versus an IDE like PyCharm.
+
+There are a number of useful command line tools which make use of the things that have been taught in this lecture, and may be put into practice when you're using them. An example of this is [youtube-dl](https://github.com/ytdl-org/youtube-dl), a CLI tool that lets you download videos from youtube.com or other video platforms.
+
+The documentation for it is in the GitHub link, but just to give you a taste of how to use it, we'll show some features here. For starters, we can try to download the DSC introduction video by Google:
+
+```bash
+~ $ youtube-dl https://www.youtube.com/watch?v=DcN_hcHXR_0
+[youtube] DcN_hcHXR_0: Downloading webpage
+[download] Destination: Google Developer Student Clubs-DcN_hcHXR_0.mp4
+[download] 100% of 3.82MiB in 00:24
+```
+
+And tada! The video has now been downloaded in the directory that you ran the command in.
+
+Say, you were doing COMP2048 (Theory  of Computing) at UQ and wanted to download the playlist that Dr. Shakes recommends you to watch, then you would run the following command as per the documentation: 
+
+```bash
+~ $ youtube-dl -cit https://www.youtube.com/playlist?list=PLC0kkV5axv-X3JOXeHGoedTMCXGakoYmt
+WARNING: --title is deprecated. Use -o "%(title)s-%(id)s.%(ext)s" instead.
+[youtube:playlist] PLC0kkV5axv-X3JOXeHGoedTMCXGakoYmt: Downloading webpage
+[download] Downloading playlist: Computation
+[youtube:playlist] playlist Computation: Downloading 34 videos
+[download] Downloading video 1 of 34
+[youtube] Mv9NEXX1VHc: Downloading webpage
+[download] Destination: What on Earth is Recursion - Computerphile-Mv9NEXX1VHc.mp4
+[download]  24.8% of 48.22MiB at 77.10KiB/s ETA 08:01
+```
+
+OK, so that's gonna take some time, best to cancel that for now (bonus quiz: do you remember what command you have to press to kill the process?). youtube-dl is an extensive tool, and those commands only touch the tip of the iceberg with regards to what it can do.
+
+There are a whole bunch of awesome CLI tools for everything that you can imagine, from tools that allow you to [have a finance watchlist](https://github.com/jkwill87/stonky), [Google from your terminal](https://github.com/jarun/googler), [venture into the Matrix](https://github.com/abishekvashok/cmatrix), [play Conway's Game of Life](https://github.com/Syntaf/GameOfLife), [watch MLB games](https://github.com/paaatrick/playball), and even [browse Reddit](https://github.com/michael-lazar/rtv). As an exercise, go and try to read some of those tools' documention, and put into practice everything you've learnt here! 
+
+As a developer you'll come across more and more CLI tools due to their ease of use and practicality, and they'll likely become an everyday exercise for you; some more developer-specific tools you'll come across are [fx](https://github.com/antonmedv/fx), [tmux](https://github.com/tmux/tmux/wiki), [howdoi](https://github.com/gleitz/howdoi), [curl](https://github.com/curl/curl), [eksctl](https://github.com/weaveworks/eksctl) and a whole bunch more.
+
 ## Alternatives to Bash
 
 There are also alternative shells available for Linux and macOS. While bash is an incredible system, other services such as `zsh` and `fish` can extend the function of your shell and allow for greater levels of customisation, which, let's face it, is a big draw for a lot of programmers. Do some more research into which shell might fit you best!
