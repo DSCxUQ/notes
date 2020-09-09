@@ -20,4 +20,6 @@ Click on the links below to access the relevant notes!
 
 [@nicklambourne](https://github.com/nicklambourne) Nick Lambourne - UQCS
 
+[@kumar-ish](https://github.com/kumar-ish) Madhav Kumar - UQCS
+
 [@jslvn](https://github.com/jslvn) James Sullivan - Sanity Check
